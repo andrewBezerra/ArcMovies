@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ArcMovies.Views.Templates.GenreItemTemplate"
+             xmlns:controls="clr-namespace:ArcMovies.Controls;assembly=ArcMovies">
+  <ContentView.Resources>
+    <ResourceDictionary>
+      <Style x:Key="GenreStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="12" />
+      </Style>
+
+    </ResourceDictionary>
+  </ContentView.Resources>
+  <ContentView.Content>
+    <Grid
+        BackgroundColor="{StaticResource GrayColor}"
+        Margin="0, 0, 12, 0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition>
+          <ColumnDefinition.Width>
+            <OnPlatform x:TypeArguments="GridLength">
+              <On Platform="Android, iOS" Value="100"/>
+            </OnPlatform>
+          </ColumnDefinition.Width>
+        </ColumnDefinition>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+
+      </Grid.RowDefinitions>
+      <Label
+           VerticalOptions="Center"
+           HorizontalOptions="Center"
+           Text="{Binding Name}"
+           Style="{StaticResource GenreStyle}"/>
+
+
+    </Grid>
+  </ContentView.Content>
+</ContentView>

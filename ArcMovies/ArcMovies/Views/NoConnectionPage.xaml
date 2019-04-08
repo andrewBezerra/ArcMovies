@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ArcMovies.Views.NoConnectionPage">
+  <ContentPage.Content>
+    <StackLayout
+      Spacing="10">
+      <Label Text="No internet connection!"
+          FontAttributes="Bold"
+          FontSize="18"
+          VerticalOptions="CenterAndExpand"
+          HorizontalOptions="CenterAndExpand"
+          TextColor="{StaticResource BlackColor}" />
+      <Button Text="Try Again"
+              TextColor="{StaticResource WhiteColor}"
+              BackgroundColor="{StaticResource BackgroundColor}"
+              FontAttributes="Bold"
+              VerticalOptions="CenterAndExpand"
+              HorizontalOptions="CenterAndExpand"
+              FontSize="14" Command="{Binding GoHomeCommand}">
+      </Button>
+
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcMovies.Android", "ArcMovies\ArcMovies.Android\ArcMovies.Android.csproj", "{FC46F068-4317-489A-9976-38FC37273650}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcMovies", "ArcMovies\ArcMovies\ArcMovies.csproj", "{F84722E9-0E2E-416E-81FE-582550B01509}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC46F068-4317-489A-9976-38FC37273650}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC46F068-4317-489A-9976-38FC37273650}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC46F068-4317-489A-9976-38FC37273650}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FC46F068-4317-489A-9976-38FC37273650}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC46F068-4317-489A-9976-38FC37273650}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC46F068-4317-489A-9976-38FC37273650}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F84722E9-0E2E-416E-81FE-582550B01509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F84722E9-0E2E-416E-81FE-582550B01509}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F84722E9-0E2E-416E-81FE-582550B01509}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F84722E9-0E2E-416E-81FE-582550B01509}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F84722E9-0E2E-416E-81FE-582550B01509}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F84722E9-0E2E-416E-81FE-582550B01509}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B9C01D38-8239-4E61-9F4E-C1DE1C56C03C}
+	EndGlobalSection
+EndGlobal
