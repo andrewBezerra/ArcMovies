@@ -4,6 +4,6 @@ ArcMovies - An Upcoming Movies App
 
 Screenshots - iOS, Android, & Windows Phone
 ===
-![Splash](Screenshot/MovieSplash.png)
-![Main](Screenshot/Main - Coming Soon.png)
-![Details](Screenshot/Movie Details.png)
+![Splash](screenshots/MovieSplash.png)
+![Main](screenshots/Main - Coming Soon.png)
+![Details](screenshots/Movie Details.png)
