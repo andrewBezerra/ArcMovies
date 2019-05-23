@@ -3,6 +3,7 @@ using Android.Content.PM;
 using Android.OS;
 
 
+
 namespace ArcMovies.Droid
 {
     [Activity(
@@ -20,9 +21,9 @@ namespace ArcMovies.Droid
             ToolbarResource = Resource.Layout.Toolbar;
             base.SetTheme(Resource.Style.MainTheme);
             base.OnCreate(savedInstanceState);
-
+          
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-
+            //Android.Glide.Forms.Init();
             LoadApplication(new App(new AndroidInitializer()));
         }
     }

@@ -49,7 +49,9 @@ namespace ArcMovies
         protected override async void OnInitialized()
         {
             InitializeComponent();
-
+            #if DEBUG
+                        HotReloader.Current.Start(this);
+            #endif
             await NavigationService.NavigateAsync($"xf:///{nameof(ArcMenuPage)}/NavigationPage/{nameof(MainPage)}");
         }
     }
