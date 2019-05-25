@@ -1,79 +1,86 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:behavior="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="ArcMovies.MainPage" Title="{Binding Title}" >
+<ContentPage
+    x:Class="ArcMovies.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behavior="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    Title="{Binding Title}"
+    prism:ViewModelLocator.AutowireViewModel="True">
 
-    <ListView HasUnevenRows="true"
-            IsRefreshing = "{Binding IsBusy}"
-            ItemsSource="{Binding Movies}"
-            IsPullToRefreshEnabled="True"
-            HeightRequest="-1"
-            SeparatorVisibility="None"
-            RefreshCommand="{Binding PullToRefreshCommand}">
+    <ListView
+        HasUnevenRows="true"
+        HeightRequest="-1"
+        IsPullToRefreshEnabled="True"
+        IsRefreshing="{Binding IsBusy}"
+        ItemsSource="{Binding Movies}"
+        RefreshCommand="{Binding PullToRefreshCommand}"
+        SeparatorVisibility="None">
 
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <Frame Padding="0"
-                           HasShadow="True"
-                           Margin="2">
-                        <Grid Margin="5">
+                    <Frame
+                        Margin="3"
+                        Padding="0"
+                        HasShadow="True">
+                        <Grid Margin="2">
 
                             <Image
-                   Aspect="AspectFill"
-                   Opacity="0.1"
-                   IsOpaque ="true"
-                   HorizontalOptions="Fill"
-                   VerticalOptions="Fill">
+                                Aspect="AspectFill"
+                                HorizontalOptions="Fill"
+                                IsOpaque="true"
+                                Opacity="0.1"
+                                VerticalOptions="Fill">
                                 <Image.Source>
-                                    <UriImageSource Uri="{Binding BackdropPath, Converter={StaticResource MovieImageConverter}}" 
-                                    CachingEnabled="true"
-                                    CacheValidity="14"/>
+                                    <UriImageSource
+                                        CacheValidity="14"
+                                        CachingEnabled="true"
+                                        Uri="{Binding BackdropPath, Converter={StaticResource MovieImageConverter}}" />
                                 </Image.Source>
                             </Image>
 
-                            <Grid ColumnSpacing="3"
-                  RowSpacing="0"
-                  Padding="10,0,10,0"
-                  VerticalOptions="Center">
+                            <Grid
+                                Padding="10,0,10,0"
+                                ColumnSpacing="3"
+                                RowSpacing="0"
+                                VerticalOptions="Center">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="8*"/>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="8*" />
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0">
-                                    <Image 
-                       Aspect="AspectFit"
-                       HorizontalOptions="Fill"
-                       VerticalOptions="Fill">
+                                    <Image
+                                        Aspect="AspectFill"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="CenterAndExpand">
                                         <Image.Source>
-                                            <UriImageSource Uri="{Binding PosterPath, Converter={StaticResource MovieImageConverter}}"
-                                        CachingEnabled="true"
-                                        CacheValidity="14"/>
+                                            <UriImageSource
+                                                CacheValidity="14"
+                                                CachingEnabled="true"
+                                                Uri="{Binding PosterPath, Converter={StaticResource MovieImageConverter}}" />
                                         </Image.Source>
                                     </Image>
                                 </StackLayout>
                                 <FlexLayout
-                Grid.Column="1"
-                Direction="Column"
-                JustifyContent="SpaceEvenly">
+                                    Grid.Column="1"
+                                    Direction="Column"
+                                    JustifyContent="SpaceEvenly">
                                     <Label
-                  Text="{Binding Title}"
-                  FontAttributes="Bold"
-                  FontSize="18"
-                  TextColor="{StaticResource BlackColor}" />
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="{Binding Title}"
+                                        TextColor="{StaticResource BlackColor}" />
                                     <Label
-                    VerticalOptions="Center"
-                    Text="{Binding ReleaseDate, StringFormat='Release date: {0:MMMM d}'}"
-                    FontSize="12"
-                    TextColor="{StaticResource BlackColor}"/>
+                                        FontSize="12"
+                                        Text="{Binding ReleaseDate, StringFormat='Release date: {0:MMMM d}'}"
+                                        TextColor="{StaticResource BlackColor}"
+                                        VerticalOptions="Center" />
                                     <Label
-                     VerticalOptions="Center"
-                     Text="{Binding Popularity, StringFormat='Popularity: {0:F0}'}"
-                     FontSize="12"
-                     TextColor="{StaticResource BlackColor}"/>
+                                        FontSize="12"
+                                        Text="{Binding Popularity, StringFormat='Popularity: {0:F0}'}"
+                                        TextColor="{StaticResource BlackColor}"
+                                        VerticalOptions="Center" />
                                 </FlexLayout>
                             </Grid>
                         </Grid>
@@ -82,12 +89,14 @@
             </DataTemplate>
         </ListView.ItemTemplate>
         <ListView.Behaviors>
-            <behavior:EventToCommandBehavior EventName="ItemTapped"
-                                Command="{Binding ShowMovieCommand}"
-                                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
-            <behavior:EventToCommandBehavior EventName="ItemAppearing"
-                                Command="{Binding LoadMoreCommand}"
-                                EventArgsConverter="{StaticResource ItemVisibilityEventArgsConverter}" />
+            <behavior:EventToCommandBehavior
+                Command="{Binding ShowMovieCommand}"
+                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}"
+                EventName="ItemTapped" />
+            <behavior:EventToCommandBehavior
+                Command="{Binding LoadMoreCommand}"
+                EventArgsConverter="{StaticResource ItemVisibilityEventArgsConverter}"
+                EventName="ItemAppearing" />
         </ListView.Behaviors>
 
     </ListView>
