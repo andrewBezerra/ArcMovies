@@ -96,12 +96,12 @@ namespace ArcMovies.ViewModels
             get => _isActive;
             set => SetProperty(ref _isActive, value, RaiseIsActiveChanged);
         }
-        private bool _hasConectivity;
-        public bool HasConectivity
-        {
-            get => CrossConnectivity.Current.IsConnected;
+        //private bool _hasConectivity;
+        //public bool HasConectivity
+        //{
+        //   // get => CrossConnectivity.Current.IsConnected;
             
-        }
+        //}
 
         protected ViewModelBase(INavigationService navigationService, IPageDialogService pageDialogService)
         {

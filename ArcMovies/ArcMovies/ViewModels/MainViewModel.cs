@@ -5,6 +5,7 @@ using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,7 +14,13 @@ namespace ArcMovies.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public ObservableCollection<Movie> Movies { get; }
+        private ObservableCollection<Movie> _movies;
+        public ObservableCollection<Movie> Movies
+        {
+            get { return _movies; }
+            set { SetProperty(ref _movies, value); }
+        }
+      
 
         private DelegateCommand<Movie> _ShowMovieCommand;
         public DelegateCommand<Movie> ShowMovieCommand =>
@@ -39,34 +46,34 @@ namespace ArcMovies.ViewModels
         {
             Title = "Coming Soon";
 
-            Movies = new ObservableCollection<Movie>();
-            _TheMovieDBAPIService = theMovieDBAPIService;
 
-            if (!HasConectivity)
-                NavigationService.NavigateAsync("NoConnectionPage");
+            _TheMovieDBAPIService = theMovieDBAPIService;
+            Movies = new ObservableCollection<Movie>();
+            //if (!HasConectivity)
+            //    NavigationService.NavigateAsync("NoConnectionPage");
 
         }
 
 
         public override async void OnNavigatingTo(INavigationParameters parameters)
         {
-            if (HasConectivity)
+            //if (HasConectivity)
                 await LoadAsync();
 
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
-            var navigationMode = parameters.GetNavigationMode();
-            if (navigationMode == NavigationMode.Back)
-            {
-                Console.Write("Voltei!");
-                return;
-            }
-            else
-            {
-                Console.Write("Navegando para");
-            }
+            //var navigationMode = parameters.GetNavigationMode();
+            //if (navigationMode == NavigationMode.Back)
+            //{
+            //    Console.Write("Voltei!");
+            //    return;
+            //}
+            //else
+            //{
+            //    Console.Write("Navegando para");
+            //}
 
         }
 
@@ -76,15 +83,15 @@ namespace ArcMovies.ViewModels
             try
             {
                 IsBusy = true;
-               
-               
+
+
                 movie = await _TheMovieDBAPIService.FindByIdAsync(movie.Id);
                 var navigationParams = new NavigationParameters
                 {
                     {"movie", movie}
                 };
                 await NavigationService.NavigateAsync(nameof(DetailsPage), navigationParams);
-               
+
 
             }
             catch (Exception ex)
@@ -138,6 +145,8 @@ namespace ArcMovies.ViewModels
 
                 IsBusy = false;
             }
+          
+
         }
 
     }

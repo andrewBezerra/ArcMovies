@@ -11,7 +11,7 @@ namespace ArcMovies.Converters
         {
             if (parameter != null && parameter.Equals("Backdrop"))
                 return string.Format("{0}{1}", AppSettings.BackdropImageBaseUrl, value);
-            else
+            else 
                 return string.Format("{0}{1}", AppSettings.PosterImageBaseUrl, value);
         }
 

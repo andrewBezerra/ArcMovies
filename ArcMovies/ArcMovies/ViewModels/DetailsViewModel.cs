@@ -7,20 +7,25 @@ namespace ArcMovies.ViewModels
 {
     public class DetailsViewModel : ViewModelBase
     {
-        private Movie _movie;
+      
         private INavigationService _navigationService;
         private ITheMovieDBAPIService _TheMovieDBAPIService;
 
-       
+        private Movie _movie;
         public Movie Movie
         {
             get { return _movie; }
-            set
-            {
-                _movie = value;
-                OnPropertyChanged();
-            }
+            set { SetProperty(ref _movie, value); }
         }
+        //public Movie Movie
+        //{
+        //    get { return _movie; }
+        //    set
+        //    {
+        //        _movie = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
 
         protected DetailsViewModel(ITheMovieDBAPIService theMovieDBAPIService, INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)

@@ -1,59 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
-                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                  xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-                  xmlns:behavior="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
-                  prism:ViewModelLocator.AutowireViewModel="True"
-                  x:Class="ArcMovies.Views.ArcMenuPage"
-                  Title="ArcMovies">
+<MasterDetailPage
+    x:Class="ArcMovies.Views.ArcMenuPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behavior="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    Title="ArcMovies"
+    prism:ViewModelLocator.AutowireViewModel="True">
 
-  <MasterDetailPage.Master>
+    <MasterDetailPage.Master>
 
-    <NavigationPage Title="Menu">
-      <!--Icon="movies_menu.png">-->
+        <NavigationPage Title="Menu">
+            <!--  Icon="movies_menu.png">  -->
 
-      <x:Arguments>
-        <ContentPage Title="ArcMovies">
+            <x:Arguments>
+                <ContentPage Title="ArcMovies">
 
-          <ListView ItemsSource="{Binding MenuItems}"
-                    SelectedItem="{Binding SelectedMenuItem}"
-                    SeparatorColor="LightGray"
-                    RowHeight="60"
-                    SeparatorVisibility="Default"
-                    BackgroundColor="#e8e8e8">
+                    <ListView
+                        BackgroundColor="#e8e8e8"
+                        ItemsSource="{Binding MenuItems}"
+                        RowHeight="60"
+                        SelectedItem="{Binding SelectedMenuItem}"
+                        SeparatorColor="LightGray"
+                        SeparatorVisibility="Default">
 
-            <ListView.ItemTemplate>
-              <DataTemplate>
-                <ViewCell>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
 
-                  <!-- Main design for our menu items -->
-                  <StackLayout VerticalOptions="FillAndExpand"
-                               Orientation="Horizontal"
-                               Padding="20,10,0,10"
-                               Spacing="20">
+                                    <!--  Main design for our menu items  -->
+                                    <StackLayout
+                                        Padding="20,10,0,10"
+                                        Orientation="Horizontal"
+                                        Spacing="20"
+                                        VerticalOptions="FillAndExpand">
 
-                    <Image Source="{Binding Icon}"
-                           WidthRequest="35"
-                           HeightRequest="35"
-                           VerticalOptions="Center" />
+                                        <Image
+                                            HeightRequest="35"
+                                            Source="{Binding Icon}"
+                                            VerticalOptions="Center"
+                                            WidthRequest="35" />
 
-                    <Label Text="{Binding Title}"
-                           FontSize="Medium"
-                           VerticalOptions="Center"
-                           TextColor="Black"/>
-                  </StackLayout>
-                </ViewCell>
-              </DataTemplate>
-            </ListView.ItemTemplate>
+                                        <Label
+                                            FontSize="Medium"
+                                            Text="{Binding Title}"
+                                            TextColor="Black"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
 
-            <ListView.Behaviors>
-              <behavior:EventToCommandBehavior EventName="ItemTapped"
-                                        Command="{Binding NavigateCommand}" />
-            </ListView.Behaviors>
+                        <ListView.Behaviors>
+                            <behavior:EventToCommandBehavior Command="{Binding NavigateCommand}" EventName="ItemTapped" />
+                        </ListView.Behaviors>
 
-          </ListView>
-        </ContentPage>
-      </x:Arguments>
-    </NavigationPage>
-  </MasterDetailPage.Master>
+                    </ListView>
+                </ContentPage>
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Master>
 </MasterDetailPage>

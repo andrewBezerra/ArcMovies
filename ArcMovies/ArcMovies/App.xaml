@@ -1,31 +1,32 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
-             xmlns:converters="clr-namespace:ArcMovies.Converters;assembly=ArcMovies"
-             x:Class="ArcMovies.App">
-  <Application.Resources>
-    <ResourceDictionary>
-      <!-- GENERAL COLORS -->
-      <Color x:Key="WhiteColor">#FFFFFF</Color>
-      <Color x:Key="BlackColor">#000000</Color>
-      <Color x:Key="GrayColor">#CCCCCC</Color>
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication
+    x:Class="ArcMovies.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:ArcMovies.Converters;assembly=ArcMovies"
+    xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--  GENERAL COLORS  -->
+            <Color x:Key="WhiteColor">#FFFFFF</Color>
+            <Color x:Key="BlackColor">#000000</Color>
+            <Color x:Key="GrayColor">#CCCCCC</Color>
 
-      <!-- THEME COLORS -->
-      <Color x:Key="AccentColor">#FFFFFF</Color>
-      <Color x:Key="ToolbarColor">#151C25</Color>
-      <Color x:Key="BackgroundColor">#FFFFFF</Color>
-      <Color x:Key="DarkBackgroundColor">#512DA8</Color>
-      <Color x:Key="MenuBackgroundColor">#44545C</Color>
-      
-     
+            <!--  THEME COLORS  -->
+            <Color x:Key="AccentColor">#FFFFFF</Color>
+            <Color x:Key="ToolbarColor">#151C25</Color>
+            <Color x:Key="BackgroundColor">#FFFFFF</Color>
+            <Color x:Key="DarkBackgroundColor">#512DA8</Color>
+            <Color x:Key="MenuBackgroundColor">#44545C</Color>
 
-      <!-- CONVERTERS -->
-      <converters:MovieImageConverter x:Key="MovieImageConverter" />
-      <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter" />
-      <converters:ItemVisibilityEventArgsConverter x:Key="ItemVisibilityEventArgsConverter"/>
-      <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
-      
-    </ResourceDictionary>
-  </Application.Resources>
+
+
+            <!--  CONVERTERS  -->
+            <converters:MovieImageConverter x:Key="MovieImageConverter" />
+            <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter" />
+            <converters:ItemVisibilityEventArgsConverter x:Key="ItemVisibilityEventArgsConverter" />
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
+
+        </ResourceDictionary>
+    </Application.Resources>
 </prism:PrismApplication>

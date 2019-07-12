@@ -15,6 +15,7 @@ namespace ArcMovies.Droid
 
             // Create your application here
             StartActivity(typeof(MainActivity));
+            //Finish();
         }
     }
 }

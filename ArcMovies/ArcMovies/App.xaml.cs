@@ -41,17 +41,21 @@ namespace ArcMovies
             //containerRegistry.RegisterForNavigation<MenuPage, MenuViewModel>();
             containerRegistry.RegisterSingleton<IHttpRequest, HttpRequest>();
             containerRegistry.RegisterSingleton<ITheMovieDBAPIService, TheMovieDBAPIService>();
+           
 
 
+           
+        }
+        private void DoSomethind(params int[] Args)
+        {
 
         }
-
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            #if DEBUG
-                        HotReloader.Current.Start(this);
-            #endif
+#if DEBUG
+            HotReloader.Current.Run(this);
+#endif
             await NavigationService.NavigateAsync($"xf:///{nameof(ArcMenuPage)}/NavigationPage/{nameof(MainPage)}");
         }
     }

@@ -9,9 +9,9 @@ namespace ArcMovies.ViewModels
     {
         private DelegateCommand _goHomeCommand;
 
-        public DelegateCommand GoHomeCommand =>
-            _goHomeCommand ?? (_goHomeCommand = new DelegateCommand(async () =>
-            await ExecuteGoHomeCommand(), () => !IsBusy));
+        //public DelegateCommand GoHomeCommand =>
+        //    _goHomeCommand ?? (_goHomeCommand = new DelegateCommand(async () =>
+        //    await ExecuteGoHomeCommand(), () => !IsBusy));
 
         protected NoConnectionViewModel(INavigationService navigationService, IPageDialogService pageDialogService)
             : base(navigationService, pageDialogService)
@@ -21,12 +21,12 @@ namespace ArcMovies.ViewModels
         }
 
 
-        private async Task ExecuteGoHomeCommand()
-        {
-            if (HasConectivity)
-                await NavigationService.NavigateAsync("/NavigationPage/MenuPage");
-            else
-                await PageDialogService.DisplayAlertAsync("Warning", "No internet connection. Try again later.", "OK");
-        }
+        //private async Task ExecuteGoHomeCommand()
+        //{
+        //    //if (HasConectivity)
+        //    //    await NavigationService.NavigateAsync("/NavigationPage/MenuPage");
+        //    //else
+        //    //    await PageDialogService.DisplayAlertAsync("Warning", "No internet connection. Try again later.", "OK");
+        //}
     }
 }

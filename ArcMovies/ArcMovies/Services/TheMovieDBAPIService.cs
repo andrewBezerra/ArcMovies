@@ -21,9 +21,9 @@ namespace ArcMovies.Services
                     $"&language={language}" +
                     $"&page={pageNumber}";
 
-            SearchResponse<Movie> response = await _request.GetAsync<SearchResponse<Movie>>(url).ConfigureAwait(false);
+           return await _request.GetAsync<SearchResponse<Movie>>(url).ConfigureAwait(false);
 
-            return response;
+           
 
         }
        
@@ -31,9 +31,9 @@ namespace ArcMovies.Services
         {
             string url = $"{AppSettings.ApiBaseUrl}movie/{movieId}?api_key={AppSettings.ApiKey}&language={language}";
 
-            Movie response = await _request.GetAsync<Movie>(url);
+           return await _request.GetAsync<Movie>(url);
 
-            return response;
+           
         }
     }
 }

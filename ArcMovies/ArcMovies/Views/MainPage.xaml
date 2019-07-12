@@ -4,13 +4,14 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behavior="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     Title="{Binding Title}"
     prism:ViewModelLocator.AutowireViewModel="True">
 
     <ListView
-        HasUnevenRows="true"
-        HeightRequest="-1"
+        HasUnevenRows="True"
         IsPullToRefreshEnabled="True"
         IsRefreshing="{Binding IsBusy}"
         ItemsSource="{Binding Movies}"
@@ -20,29 +21,92 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <Frame
-                        Margin="3"
-                        Padding="0"
-                        HasShadow="True">
+                    <!--<Frame
+                        Margin="6"
+                        Padding="8"
+                        BorderColor="Gainsboro"
+                        CornerRadius="8"
+                        HasShadow="False">-->
+
+
+                    <Grid Margin="8,4" IsClippedToBounds="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image
+                            Grid.ColumnSpan="2"
+                            Aspect="AspectFill"
+                            HorizontalOptions="Fill"
+                            IsOpaque="True"
+                            Opacity="0.1"
+                            VerticalOptions="Fill">
+                            <Image.Source>
+                                <UriImageSource
+                                    CacheValidity="14"
+                                    CachingEnabled="True"
+                                    Uri="{Binding BackdropPath, Converter={StaticResource MovieImageConverter}, ConverterParameter=Backdrop}" />
+                            </Image.Source>
+                        </Image>
+
+                        <ffimageloading:CachedImage
+                            Grid.Column="0"
+                            DownsampleToViewSize="true"
+                            HeightRequest="300"
+                            Source="{Binding PosterPath, Converter={StaticResource MovieImageConverter}}"
+                            WidthRequest="300" />
+
+
+                        <StackLayout Grid.Column="1">
+
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="{Binding Title}"
+                                TextColor="Black" />
+                            <Label
+                                FontSize="12"
+                                Text="{Binding ReleaseDate, StringFormat='Release date: {0:MMMM d}'}"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Label
+                                FontSize="12"
+                                Text="{Binding Popularity, StringFormat='Popularity: {0:F0}'}"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                        </StackLayout>
+                        <!--<Image
+                            Aspect="AspectFill"
+                            HorizontalOptions="Fill"
+                            IsOpaque="True"
+                            Opacity="0.1"
+                            VerticalOptions="Fill">
+                            <Image.Source>
+                                <UriImageSource Uri="{Binding BackdropPath, Converter={StaticResource MovieImageConverter}}" />
+                            </Image.Source>
+                        </Image>-->
+
+
+                    </Grid>
+
+                    <!--</Frame>-->
+                    <!--<Frame Padding="0" HasShadow="True">
                         <Grid Margin="2">
 
                             <Image
                                 Aspect="AspectFill"
                                 HorizontalOptions="Fill"
-                                IsOpaque="true"
+                                IsOpaque="True"
                                 Opacity="0.1"
                                 VerticalOptions="Fill">
                                 <Image.Source>
-                                    <UriImageSource
-                                        CacheValidity="14"
-                                        CachingEnabled="true"
-                                        Uri="{Binding BackdropPath, Converter={StaticResource MovieImageConverter}}" />
+                                    <UriImageSource Uri="{Binding BackdropPath, Converter={StaticResource MovieImageConverter}}" />
                                 </Image.Source>
                             </Image>
 
                             <Grid
                                 Padding="10,0,10,0"
-                                ColumnSpacing="3"
+                                ColumnSpacing="0"
                                 RowSpacing="0"
                                 VerticalOptions="Center">
                                 <Grid.ColumnDefinitions>
@@ -50,22 +114,12 @@
                                     <ColumnDefinition Width="8*" />
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0">
-                                    <Image
-                                        Aspect="AspectFill"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="CenterAndExpand">
-                                        <Image.Source>
-                                            <UriImageSource
-                                                CacheValidity="14"
-                                                CachingEnabled="true"
-                                                Uri="{Binding PosterPath, Converter={StaticResource MovieImageConverter}}" />
-                                        </Image.Source>
-                                    </Image>
+                    -->
+                    <!--    -->
+                    <!--
                                 </StackLayout>
-                                <FlexLayout
-                                    Grid.Column="1"
-                                    Direction="Column"
-                                    JustifyContent="SpaceEvenly">
+                                <StackLayout Grid.Column="1">
+
                                     <Label
                                         FontAttributes="Bold"
                                         FontSize="18"
@@ -81,10 +135,10 @@
                                         Text="{Binding Popularity, StringFormat='Popularity: {0:F0}'}"
                                         TextColor="{StaticResource BlackColor}"
                                         VerticalOptions="Center" />
-                                </FlexLayout>
+                                </StackLayout>
                             </Grid>
                         </Grid>
-                    </Frame>
+                    </Frame>-->
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
