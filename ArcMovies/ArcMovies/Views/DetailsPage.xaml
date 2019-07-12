@@ -77,6 +77,7 @@
                     <RowDefinition Height="200" />
                 </Grid.RowDefinitions>
                 <!--  MOVIE BACKDROP  -->
+
                 <Image
                     Aspect="AspectFill"
                     IsOpaque="true"
@@ -101,6 +102,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
+
                     <Image
                         Grid.Row="0"
                         Margin="10,-100,0,0"
