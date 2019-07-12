@@ -11,6 +11,7 @@
     prism:ViewModelLocator.AutowireViewModel="True">
 
     <ListView
+        CachingStrategy="RecycleElement"
         HasUnevenRows="True"
         IsPullToRefreshEnabled="True"
         IsRefreshing="{Binding IsBusy}"
@@ -21,61 +22,72 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <!--<Frame
-                        Margin="6"
-                        Padding="8"
-                        BorderColor="Gainsboro"
-                        CornerRadius="8"
-                        HasShadow="False">-->
+                    <Frame
+                        Margin="2"
+                        Padding="0"
+                        HasShadow="True"
+                        HeightRequest="100">
 
 
-                    <Grid Margin="8,4" IsClippedToBounds="True">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Image
-                            Grid.ColumnSpan="2"
-                            Aspect="AspectFill"
-                            HorizontalOptions="Fill"
-                            IsOpaque="True"
-                            Opacity="0.1"
-                            VerticalOptions="Fill">
-                            <Image.Source>
-                                <UriImageSource
-                                    CacheValidity="14"
-                                    CachingEnabled="True"
-                                    Uri="{Binding BackdropPath, Converter={StaticResource MovieImageConverter}, ConverterParameter=Backdrop}" />
-                            </Image.Source>
-                        </Image>
-
-                        <ffimageloading:CachedImage
+                        <Grid Margin="8,4" IsClippedToBounds="True">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="8*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.ColumnSpan="2"
+                                Aspect="AspectFill"
+                                HorizontalOptions="Fill"
+                                IsOpaque="True"
+                                Opacity="0.1"
+                                VerticalOptions="Fill">
+                                <Image.Source>
+                                    <UriImageSource
+                                        CacheValidity="14"
+                                        CachingEnabled="True"
+                                        Uri="{Binding BackdropPath, Converter={StaticResource MovieImageConverter}, ConverterParameter=Backdrop}" />
+                                </Image.Source>
+                            </Image>
+                            <Image
+                                Grid.Column="0"
+                                Aspect="AspectFill"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill">
+                                <Image.Source>
+                                    <UriImageSource
+                                        CacheValidity="14"
+                                        CachingEnabled="True"
+                                        Uri="{Binding PosterPath, Converter={StaticResource MovieImageConverter}}" />
+                                </Image.Source>
+                            </Image>
+                            <!--<ffimageloading:CachedImage
                             Grid.Column="0"
                             DownsampleToViewSize="true"
                             HeightRequest="300"
                             Source="{Binding PosterPath, Converter={StaticResource MovieImageConverter}}"
-                            WidthRequest="300" />
+                            WidthRequest="300" />-->
 
 
-                        <StackLayout Grid.Column="1">
+                            <StackLayout Grid.Column="1" Margin="0,10">
 
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="18"
-                                Text="{Binding Title}"
-                                TextColor="Black" />
-                            <Label
-                                FontSize="12"
-                                Text="{Binding ReleaseDate, StringFormat='Release date: {0:MMMM d}'}"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
-                            <Label
-                                FontSize="12"
-                                Text="{Binding Popularity, StringFormat='Popularity: {0:F0}'}"
-                                TextColor="Black"
-                                VerticalOptions="Center" />
-                        </StackLayout>
-                        <!--<Image
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding Title}"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="12"
+                                    Text="{Binding ReleaseDate, StringFormat='Release date: {0:MMMM d}'}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    FontSize="12"
+                                    Text="{Binding Popularity, StringFormat='Popularity: {0:F0}'}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                            <!--<Image
                             Aspect="AspectFill"
                             HorizontalOptions="Fill"
                             IsOpaque="True"
@@ -87,9 +99,9 @@
                         </Image>-->
 
 
-                    </Grid>
+                        </Grid>
 
-                    <!--</Frame>-->
+                    </Frame>
                     <!--<Frame Padding="0" HasShadow="True">
                         <Grid Margin="2">
 
