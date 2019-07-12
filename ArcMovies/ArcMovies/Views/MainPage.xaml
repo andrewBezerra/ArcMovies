@@ -25,11 +25,10 @@
                     <Frame
                         Margin="2"
                         Padding="0"
-                        HasShadow="True"
-                        HeightRequest="100">
+                        HasShadow="True">
 
 
-                        <Grid Margin="8,4" IsClippedToBounds="True">
+                        <Grid Margin="8,4" VerticalOptions="StartAndExpand">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*" />
                                 <ColumnDefinition Width="8*" />
@@ -50,7 +49,7 @@
                             </Image>
                             <Image
                                 Grid.Column="0"
-                                Aspect="AspectFill"
+                                Aspect="AspectFit"
                                 HorizontalOptions="Fill"
                                 VerticalOptions="Fill">
                                 <Image.Source>

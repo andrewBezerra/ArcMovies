@@ -42,7 +42,7 @@
                 <Setter Property="Margin" Value="12, 0, 24, 0" />
             </Style>
 
-            <Color x:Key="TitleColor">#5D6576</Color>
+            <Color x:Key="TitleColor">#000</Color>
 
             <Style x:Key="TitleStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource TitleColor}" />
@@ -74,11 +74,10 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="300" />
+                    <RowDefinition Height="200" />
                 </Grid.RowDefinitions>
                 <!--  MOVIE BACKDROP  -->
                 <Image
-                    Grid.Row="0"
                     Aspect="AspectFill"
                     IsOpaque="true"
                     Opacity="0.5">
@@ -91,33 +90,50 @@
 
                 </Image>
 
+
+
                 <!--  MOVIE POSTER  -->
-
-                <Image Grid.Row="0" Aspect="AspectFit">
-                    <Image.Source>
-                        <UriImageSource
-                            CacheValidity="14"
-                            CachingEnabled="true"
-                            Uri="{Binding Movie.PosterPath, Converter={StaticResource MovieImageConverter}}" />
-                    </Image.Source>
-                </Image>
-
-                <!--  OVERVIEW  -->
-                <Grid Grid.Row="1" Padding="10">
+                <Grid Grid.Row="1" BackgroundColor="Gainsboro">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="6*" />
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Label
+                    <Image
                         Grid.Row="0"
-                        Style="{StaticResource TitleStyle}"
-                        Text="OVERVIEW" />
-                    <Label
-                        Grid.Row="1"
-                        LineBreakMode="WordWrap"
-                        Style="{StaticResource TextStyle}"
-                        Text="{Binding Movie.Overview}" />
+                        Margin="10,-100,0,0"
+                        Aspect="AspectFit"
+                        HeightRequest="200"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="StartAndExpand"
+                        WidthRequest="80">
+                        <Image.Source>
+                            <UriImageSource
+                                CacheValidity="14"
+                                CachingEnabled="true"
+                                Uri="{Binding Movie.PosterPath, Converter={StaticResource MovieImageConverter}}" />
+                        </Image.Source>
+                    </Image>
+                    <Grid Grid.Column="1" Padding="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Style="{StaticResource TitleStyle}"
+                            Text="OVERVIEW" />
+                        <Label
+                            Grid.Row="1"
+                            LineBreakMode="WordWrap"
+                            Style="{StaticResource TextStyle}"
+                            Text="{Binding Movie.Overview}" />
+                    </Grid>
                 </Grid>
+                <!--  OVERVIEW  -->
+
                 <Grid Grid.Row="2" Padding="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -176,7 +192,7 @@
                         </controls:HorizontalList.ItemTemplate>
                     </controls:HorizontalList>
                 </Grid>
-                <StackLayout Grid.Row="5" Padding="10">
+                <StackLayout Grid.Row="5" Padding="10,0">
                     <!--  MOVIE BACKDROP  -->
                     <Label Style="{StaticResource TitleStyle}" Text="BACKDROP" />
                     <Image
