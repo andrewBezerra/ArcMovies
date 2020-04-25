@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage
+    x:Class="ArcMovies.Views.ArcMenuPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behavior="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    Title="ArcMovies"
+    prism:ViewModelLocator.AutowireViewModel="True">
+
+    <MasterDetailPage.Master>
+
+        <NavigationPage Title="Menu">
+            <!--  Icon="movies_menu.png">  -->
+
+            <x:Arguments>
+                <ContentPage Title="ArcMovies">
+
+                    <ListView
+                        BackgroundColor="#e8e8e8"
+                        ItemsSource="{Binding MenuItems}"
+                        RowHeight="60"
+                        SelectedItem="{Binding SelectedMenuItem}"
+                        SeparatorColor="LightGray"
+                        SeparatorVisibility="Default">
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+
+                                    <!--  Main design for our menu items  -->
+                                    <StackLayout
+                                        Padding="20,10,0,10"
+                                        Orientation="Horizontal"
+                                        Spacing="20"
+                                        VerticalOptions="FillAndExpand">
+
+                                        <Image
+                                            HeightRequest="35"
+                                            Source="{Binding Icon}"
+                                            VerticalOptions="Center"
+                                            WidthRequest="35" />
+
+                                        <Label
+                                            FontSize="Medium"
+                                            Text="{Binding Title}"
+                                            TextColor="Black"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                        <ListView.Behaviors>
+                            <behavior:EventToCommandBehavior Command="{Binding NavigateCommand}" EventName="ItemTapped" />
+                        </ListView.Behaviors>
+
+                    </ListView>
+                </ContentPage>
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

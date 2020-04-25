@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ArcMovies.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behavior="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    Title="{Binding Title}"
+    prism:ViewModelLocator.AutowireViewModel="True">
+
+    <ListView
+        CachingStrategy="RecycleElement"
+        HasUnevenRows="True"
+        IsPullToRefreshEnabled="True"
+        IsRefreshing="{Binding IsBusy}"
+        ItemsSource="{Binding Movies}"
+        RefreshCommand="{Binding PullToRefreshCommand}"
+        SeparatorVisibility="None">
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Frame
+                        Margin="2"
+                        Padding="0"
+                        HasShadow="True">
+
+
+                        <Grid Margin="8,4" VerticalOptions="StartAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="8*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.ColumnSpan="2"
+                                Aspect="AspectFill"
+                                HorizontalOptions="Fill"
+                                IsOpaque="True"
+                                Opacity="0.1"
+                                VerticalOptions="Fill">
+                                <Image.Source>
+                                    <UriImageSource
+                                        CacheValidity="14"
+                                        CachingEnabled="True"
+                                        Uri="{Binding BackdropPath, Converter={StaticResource MovieImageConverter}, ConverterParameter=Backdrop}" />
+                                </Image.Source>
+                            </Image>
+                            <Image
+                                Grid.Column="0"
+                                Aspect="AspectFit"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill">
+                                <Image.Source>
+                                    <UriImageSource
+                                        CacheValidity="14"
+                                        CachingEnabled="True"
+                                        Uri="{Binding PosterPath, Converter={StaticResource MovieImageConverter}}" />
+                                </Image.Source>
+                            </Image>
+                            <!--<ffimageloading:CachedImage
+                            Grid.Column="0"
+                            DownsampleToViewSize="true"
+                            HeightRequest="300"
+                            Source="{Binding PosterPath, Converter={StaticResource MovieImageConverter}}"
+                            WidthRequest="300" />-->
+
+
+                            <StackLayout Grid.Column="1" Margin="0,10">
+
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding Title}"
+                                    TextColor="Black" />
+                                <Label
+                                    FontSize="12"
+                                    Text="{Binding ReleaseDate, StringFormat='Release date: {0:MMMM d}'}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    FontSize="12"
+                                    Text="{Binding Popularity, StringFormat='Popularity: {0:F0}'}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                            <!--<Image
+                            Aspect="AspectFill"
+                            HorizontalOptions="Fill"
+                            IsOpaque="True"
+                            Opacity="0.1"
+                            VerticalOptions="Fill">
+                            <Image.Source>
+                                <UriImageSource Uri="{Binding BackdropPath, Converter={StaticResource MovieImageConverter}}" />
+                            </Image.Source>
+                        </Image>-->
+
+
+                        </Grid>
+
+                    </Frame>
+                    <!--<Frame Padding="0" HasShadow="True">
+                        <Grid Margin="2">
+
+                            <Image
+                                Aspect="AspectFill"
+                                HorizontalOptions="Fill"
+                                IsOpaque="True"
+                                Opacity="0.1"
+                                VerticalOptions="Fill">
+                                <Image.Source>
+                                    <UriImageSource Uri="{Binding BackdropPath, Converter={StaticResource MovieImageConverter}}" />
+                                </Image.Source>
+                            </Image>
+
+                            <Grid
+                                Padding="10,0,10,0"
+                                ColumnSpacing="0"
+                                RowSpacing="0"
+                                VerticalOptions="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="8*" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0">
+                    -->
+                    <!--    -->
+                    <!--
+                                </StackLayout>
+                                <StackLayout Grid.Column="1">
+
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="{Binding Title}"
+                                        TextColor="{StaticResource BlackColor}" />
+                                    <Label
+                                        FontSize="12"
+                                        Text="{Binding ReleaseDate, StringFormat='Release date: {0:MMMM d}'}"
+                                        TextColor="{StaticResource BlackColor}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        FontSize="12"
+                                        Text="{Binding Popularity, StringFormat='Popularity: {0:F0}'}"
+                                        TextColor="{StaticResource BlackColor}"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                            </Grid>
+                        </Grid>
+                    </Frame>-->
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        <ListView.Behaviors>
+            <behavior:EventToCommandBehavior
+                Command="{Binding ShowMovieCommand}"
+                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}"
+                EventName="ItemTapped" />
+            <behavior:EventToCommandBehavior
+                Command="{Binding LoadMoreCommand}"
+                EventArgsConverter="{StaticResource ItemVisibilityEventArgsConverter}"
+                EventName="ItemAppearing" />
+        </ListView.Behaviors>
+
+    </ListView>
+</ContentPage>
